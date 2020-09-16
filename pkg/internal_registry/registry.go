@@ -36,7 +36,7 @@ var log = logf.Log.WithName("registry")
 func IsInInternalRegistry(pluginID string) bool {
 	if _, err := os.Stat(RegistryDirectory + pluginID + "/meta.yaml"); err != nil {
 		if os.IsNotExist(err) {
-			log.Info(fmt.Sprintf("Could not find %s in the internal registry", pluginID))
+			log.Info(fmt.Sprintf("Could not find %s in the internal registry: %s", pluginID, err))
 		}
 		return false
 	}
